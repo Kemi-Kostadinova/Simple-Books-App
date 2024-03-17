@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const jwt = require("../lib/jwt");
 
 exports.register = async (userData) => {
     if (userData.password !== userData.rePassword) {
@@ -11,10 +12,14 @@ exports.register = async (userData) => {
     };
 
     const createdUser = await User.create(userData);
+    const token = jwt.sign({
+        _id: user._id,
+        email: user.email
+    });
     
     return {
         userId: createdUser._id,
         email: createdUser.email,
-        token: ""
+        token
     }
 };
