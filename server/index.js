@@ -1,5 +1,7 @@
 const express = require("express");
 
+const routes = require("./routes");
+
 const app = express();
 const port = 5000;
 
@@ -8,11 +10,6 @@ app.use((req, res, next) => {
 
     next();
 });
-
-app.get("/", (req, res) => {
-    res.json({
-        message: "Hello"
-    })
-})
+app.use(routes);
 
 app.listen(port, () => console.log(`Server is listening on http://localhost:${port}`))
