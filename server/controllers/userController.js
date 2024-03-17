@@ -7,7 +7,7 @@ router.post("/register", async (req, res) => {
 
     const { userId, email, token } = await userServise.register(userData);
 
-    res.send({
+    res.json({
         userId,
         email,
         token,
