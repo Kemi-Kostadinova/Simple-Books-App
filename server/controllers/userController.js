@@ -26,4 +26,8 @@ router.post("/login", async (req, res) => {
     })
 });
 
+router.get("/logout", async (req, res) => {
+    res.json({ok: true})
+});
+
 module.exports = router;
