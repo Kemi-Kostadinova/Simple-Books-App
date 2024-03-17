@@ -5,6 +5,7 @@ const routes = require("./routes");
 const app = express();
 const port = 5000;
 
+app.use(express.json());
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
 
