@@ -12,10 +12,7 @@ exports.register = async (userData) => {
     };
 
     const createdUser = await User.create(userData);
-    const token = jwt.sign({
-        _id: user._id,
-        email: user.email
-    });
+    const token = generateToken(createdUser);
     
     return {
         userId: createdUser._id,
@@ -23,3 +20,12 @@ exports.register = async (userData) => {
         token
     }
 };
+
+function generateToken(user) {
+    const payload = {
+        _id: user._id,
+        email: user.email
+    };
+    
+    return jwt.sign(payload, "MYSECRET", { expiresIn: "2h" });
+}
