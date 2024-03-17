@@ -1,4 +1,5 @@
 const express = require("express");
+const mongoose = require("mongoose");
 
 const routes = require("./routes");
 
@@ -13,4 +14,10 @@ app.use((req, res, next) => {
 });
 app.use(routes);
 
-app.listen(port, () => console.log(`Server is listening on http://localhost:${port}`))
+mongoose.connect("mongodb://localhost:27017/simple-app")
+.then(() =>{
+    console.log("DB is connected...");
+    app.listen(port, () => console.log(`Server is listening on http://localhost:${port}`));
+
+   })
+   .catch(err => console.log(err.message));
