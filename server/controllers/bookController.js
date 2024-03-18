@@ -11,7 +11,7 @@ router.get("/", async(req, res) => {
 router.post("/", async(req, res) => {
     const bookData = req.body;
     
-    const newBookReview = await bookService.create(bookData);
+    const newBookReview = await bookService.create({ ...bookData, owner: req.user._id });
 
     res.json(newBookReview);
 });
