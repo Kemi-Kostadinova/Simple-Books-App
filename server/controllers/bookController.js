@@ -17,7 +17,7 @@ router.post("/", async(req, res) => {
 });
 
 router.get("/:bookId", async(req, res) => {
-    const book = await getOne.getAll();
+    const book = await bookService.getAll();
 
     res.json(book);
 });
@@ -26,9 +26,17 @@ router.put("/:bookId", async(req, res) => {
     const bookId = req.params.bookId;
     const currentBook = req.body;
 
-    const book = await getOne.edit(bookId, currentBook);
+    const book = await bookService.edit(bookId, currentBook);
 
     res.json(book);
+});
+
+router.delete("/:bookId", async(req, res) => {
+    const bookId = req.params.bookId;
+
+    await bookService.delte(bookId);
+
+    res.json({ok: true});
 });
 
 module.exports = router;
