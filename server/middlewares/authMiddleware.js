@@ -1,7 +1,7 @@
 const jwt = require("../lib/jwt");
 
 exports.auth = async (req, res, next) => {
-    const token = req.headers["X-Authorization"];
+    const token = req.headers["x-authorization"];
 
     if (!token) {
         return next();

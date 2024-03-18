@@ -44,6 +44,9 @@ exports.login = async ({email, password}) => {
     }
 };
 
+exports.getInfo = (userId) => User.findById(userId);
+
+
 function generateToken(user) {
     const payload = {
         _id: user._id,
