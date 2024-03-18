@@ -11,8 +11,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background: #232323;
-  color: #ccc;
+  background: #111;
+  color: hsl(25, 100%, 50%);
 }
 .logo {
   letter-spacing: 3px;
@@ -27,7 +27,7 @@ header {
   margin: 0;
 }
 .navlink a {
-  color: #ccc;
+  color: #fff;
   text-decoration: none;
   font-size: 1.2em;
 }
