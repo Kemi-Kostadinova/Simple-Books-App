@@ -14,7 +14,7 @@ exports.register = async (userData) => {
     };
 
     const createdUser = await User.create(userData);
-    const token = generateToken(createdUser);
+    const token = await generateToken(createdUser);
     
     return {
         userId: createdUser._id,
