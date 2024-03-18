@@ -22,4 +22,13 @@ router.get("/:bookId", async(req, res) => {
     res.json(book);
 });
 
+router.put("/:bookId", async(req, res) => {
+    const bookId = req.params.bookId;
+    const currentBook = req.body;
+
+    const book = await getOne.edit(bookId, currentBook);
+
+    res.json(book);
+});
+
 module.exports = router;
