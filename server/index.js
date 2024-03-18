@@ -2,10 +2,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const routes = require("./routes");
+const { auth } = require("../middlewares/authMiddleware");
 
 const app = express();
 const port = 5000;
 
+app.use(auth);
 app.use(express.json());
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -13,6 +15,7 @@ app.use((req, res, next) => {
     next();
 });
 app.use(routes);
+
 
 mongoose.connect("mongodb://localhost:27017/simple-app")
 .then(() =>{
