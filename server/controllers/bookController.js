@@ -16,4 +16,10 @@ router.post("/", async(req, res) => {
     res.json(newBookReview);
 });
 
+router.get("/:bookId", async(req, res) => {
+    const book = await getOne.getAll();
+
+    res.json(book);
+});
+
 module.exports = router;
