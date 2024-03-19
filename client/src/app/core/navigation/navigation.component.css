@@ -12,10 +12,14 @@ header {
   align-items: center;
   justify-content: space-around;
   background: #111;
-  color: rgb(255, 106, 0);
 }
 .logo {
   letter-spacing: 3px;
+}
+.logo a {
+  color: rgb(255, 106, 0);
+  text-decoration: none;
+  font-size: 1.2em;
 }
 .nav {
   display: flex;
