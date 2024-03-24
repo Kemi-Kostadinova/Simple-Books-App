@@ -12,15 +12,17 @@
       </ng-container>
 
       <div class="input-box">
-        <input type="text" id="email" name="email" placeholder="Enter your email" ngModel #inputEmail="ngModel" required minlength="10">
+        <input type="email" id="email" name="email" placeholder="Enter your email" ngModel #inputEmail="ngModel" required minlength="10" email>
       </div>
       <ng-container *ngIf="inputEmail.touched">
         <p class="error" *ngIf="inputEmail.errors?.['required']">Email is required!</p>
         <p class="error" *ngIf="inputEmail.errors?.['minlength']">Email must be at least 10 characters!</p>
+        <p class="error" *ngIf="inputEmail.errors?.['email']">Invalid email format!</p>
       </ng-container>
 
+      <div ngModelGroup="passwords" #passwords="ngModelGroup" appPasswordCheck>
       <div class="input-box">
-        <input type="password" id="password" name="password" placeholder="Create password" ngModel #inputPassword="ngModel" required minlength="3">
+        <input type="password" id="password" name="password" placeholder="Create password" ngModel #inputPassword="ngModel" [(ngModel)]="password1" required minlength="3">
       </div>
       <ng-container *ngIf="inputPassword.touched">
         <p class="error" *ngIf="inputPassword.errors?.['required']">Password is required!</p>
@@ -28,16 +30,18 @@
       </ng-container>
 
       <div class="input-box">
-        <input type="password" id="rePassword" name="rePassword" placeholder="Confirm password" ngModel #inputRePassword="ngModel" required>
+        <input type="password" id="rePassword" name="rePassword" placeholder="Confirm password" ngModel #inputRePassword="ngModel" [(ngModel)]="password2" required>
       </div>
       <ng-container *ngIf="inputRePassword.touched">
-        <p class="error" *ngIf="inputPassword.errors?.['required']">Confirm password is required!</p>
+        <p class="error" *ngIf="inputRePassword.errors?.['required']">Password confirmation is required!</p>
+        <p class="error" *ngIf="passwords.errors?.['passwordCheck']">Passwords don`t match!</p>
       </ng-container>
+      </div>
 
-      <div class="policy">
+      <!-- <div class="policy">
         <input type="checkbox">
         <h3>I accept all terms & condition</h3>
-      </div>
+      </div> -->
       <div class="input-box button">
         <input type="Submit" value="Register Now">
       </div>
