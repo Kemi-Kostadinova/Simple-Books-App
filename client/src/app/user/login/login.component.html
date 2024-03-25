@@ -1,1 +1,59 @@
-<p>login works!</p>
+<div class="main">
+  <div class="wrapper">
+    <h2>Login</h2>
+    <form #form="ngForm" (ngSubmit)="login(form)">
+      <div class="input-box">
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email"
+          ngModel
+          #inputEmail="ngModel"
+          required
+          minlength="10"
+          email
+        />
+      </div>
+      <ng-container *ngIf="inputEmail.touched">
+        <p class="error" *ngIf="inputEmail.errors?.['required']">
+          Email is required!
+        </p>
+        <p class="error" *ngIf="inputEmail.errors?.['minlength']">
+          Email must be at least 10 characters!
+        </p>
+        <p class="error" *ngIf="inputEmail.errors?.['email']">
+          Invalid email format!
+        </p>
+      </ng-container>
+
+      <div class="input-box">
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+          ngModel
+          #inputPassword="ngModel"
+          required
+          minlength="3"
+        />
+      </div>
+      <ng-container *ngIf="inputPassword.touched">
+        <p class="error" *ngIf="inputPassword.errors?.['required']">
+          Password is required!
+        </p>
+        <p class="error" *ngIf="inputPassword.errors?.['minlength']">
+          Password must be at least 3 characters!
+        </p>
+      </ng-container>
+
+      <div class="input-box button">
+        <input type="Submit" value="Login" />
+      </div>
+      <div class="text">
+        <h3>Already have an account? <a routerLink="/register">Register</a></h3>
+      </div>
+    </form>
+  </div>
+</div>
