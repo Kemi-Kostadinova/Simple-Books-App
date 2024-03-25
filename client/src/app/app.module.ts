@@ -11,12 +11,14 @@ import { BookModule } from './book/book.module';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { appInterceptorProvider } from './app.interceptor';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    AuthenticateComponent
   ],
   imports: [
     BrowserModule,

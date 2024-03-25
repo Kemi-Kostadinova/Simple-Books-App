@@ -37,7 +37,7 @@ router.get("/logout", async (req, res) => {
 });
 
 router.get("/profile", async (req, res) => {
-    const currentUser = await userService.getInfo(req.user._id);
+    const currentUser = await userService.getInfo(req.user?._id);
 
     res.json(currentUser);
 });
