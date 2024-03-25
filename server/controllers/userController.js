@@ -21,6 +21,8 @@ router.post("/login", async (req, res) => {
 
     const { userId, email, token } = await userService.login(userData);
 
+    res.cookie('auth', token);
+
     res.json({
         userId,
         email,
@@ -29,6 +31,8 @@ router.post("/login", async (req, res) => {
 });
 
 router.get("/logout", async (req, res) => {
+    res.clearCookie("auth");
+
     res.json({ok: true})
 });
 
