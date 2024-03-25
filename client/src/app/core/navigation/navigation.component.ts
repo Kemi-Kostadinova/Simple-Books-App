@@ -11,6 +11,12 @@ export class NavigationComponent {
 
   constructor(private userService: UserService, private route:Router) {}
 
+  get isLoggedIn(): boolean {
+    console.log(this.userService.isLogged);
+    
+    return this.userService.isLogged;
+  }
+
   logout() {
     this.userService.logout().subscribe(() => {
       this.route.navigate(["/home"])

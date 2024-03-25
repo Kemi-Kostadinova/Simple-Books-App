@@ -13,6 +13,12 @@ export class UserService implements OnDestroy {
   user: UserForAuth | undefined;
   userSubscription: Subscription;
 
+  get isLogged(): boolean {
+    console.log(this.user);
+    
+    return !!this.user
+  }
+
   constructor(private http: HttpClient) {
     this.userSubscription = this.user$.subscribe((user) => {
       this.user = user;

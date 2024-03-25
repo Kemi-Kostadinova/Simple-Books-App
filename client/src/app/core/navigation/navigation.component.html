@@ -4,10 +4,14 @@
     <li class="navlink"><a routerLink="/">Home</a></li>
     <li class="navlink"><a routerLink="/books">Explore</a></li>
     <!-- <li class="navlink"><a href="#">About</a></li> -->
+    <ng-container *ngIf="!isLoggedIn">
     <li class="navlink"><a routerLink="/login">Login</a></li>
     <li class="navlink"><a routerLink="/register">Register</a></li>
-    <li class="navlink" (click)="logout()"><a href="#">Logout</a></li>
-    <!-- <li class="navlink"><a routerLink="/books/add">Add Review</a></li> -->
-    <!-- <li class="navlink"><a routerLink="/profile">Profile</a></li> -->
+    </ng-container>
+    <ng-container *ngIf="isLoggedIn">
+      <li class="navlink"><a routerLink="/books/add">Add Review</a></li>
+      <li class="navlink"><a routerLink="/profile">Profile</a></li>
+      <li class="navlink" (click)="logout()"><a href="#">Logout</a></li>
+  </ng-container>
   </ul>
 </header>
