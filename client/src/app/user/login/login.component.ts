@@ -15,7 +15,6 @@ export class LoginComponent {
   login(form: NgForm): void {
     
     if (form.invalid) {
-      console.log("invalid register");
       return;
     }
 

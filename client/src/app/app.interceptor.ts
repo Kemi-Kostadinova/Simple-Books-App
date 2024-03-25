@@ -8,8 +8,6 @@ import {
 } from '@angular/common/http';
 import { Observable, catchError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
-// import { ErrorService } from './core/error/error.service';
-import { Router } from '@angular/router';
 
 const { apiUrl } = environment
 
@@ -19,10 +17,8 @@ class AppInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    console.log("interceptor");
 
     if (request.url.startsWith(this.API)) {
-      console.log("interceptor", request.url);
       
       request = request.clone({
         url: apiUrl + request.url,
@@ -30,7 +26,6 @@ class AppInterceptor implements HttpInterceptor {
       })
     }
     return next.handle(request)
-
   }
 }
 
