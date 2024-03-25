@@ -8,13 +8,13 @@ import { CoreModule } from './core/core.module';
 import { HomeComponent } from './home/home.component';
 import { UserModule } from './user/user.module';
 import { BookModule } from './book/book.module';
-import { ErrorComponent } from './error/error.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ErrorComponent
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,

@@ -11,7 +11,6 @@ export class RegisterComponent {
   password2: string="";
 
   register(form: NgForm): void {
-    console.log(form.value);
     
     if (form.invalid) {
       console.log("invalid register");

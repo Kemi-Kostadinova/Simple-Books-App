@@ -52,23 +52,31 @@
   }
   
   #hero .container button {
-    color: white;
-    border: none;
+    height: 52px;
+    width: 300px;
+    margin: 18px 0;
+    padding: 0 15px;
     font-size: 20px;
-    font-weight: bold;
-    background-color: rgb(255, 106, 0);
-    padding: 16px 24px;
-    border-radius: 20px;
+    font-weight: 400;
+    color: #fff;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    border: none;
+    background: #ff7817;
     cursor: pointer;
   }
   
   #hero .container button:hover {
-    padding: 17px 25px;
-    font-size: 23px;
+    background: #FF6A00;
   }
   
   #hero .container .link a {
     text-decoration: none;
     color: rgb(255, 106, 0);
+  }
+
+  #hero .container .link a:hover {
+    text-decoration: underline;
   }
   
