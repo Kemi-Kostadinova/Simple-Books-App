@@ -12,10 +12,9 @@ export class UserService implements OnDestroy {
 
   user: UserForAuth | undefined;
   userSubscription: Subscription;
+  
 
   get isLogged(): boolean {
-    console.log(this.user);
-    
     return !!this.user
   }
 
