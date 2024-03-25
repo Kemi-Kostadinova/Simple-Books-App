@@ -7,6 +7,8 @@ router.post("/register", async (req, res) => {
 
     const { userId, email, token } = await userService.register(userData);
 
+    res.cookie('auth', token);
+
     res.json({
         userId,
         email,

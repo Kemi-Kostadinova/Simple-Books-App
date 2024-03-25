@@ -1,7 +1,7 @@
 const jwt = require("../lib/jwt");
 
 exports.auth = async (req, res, next) => {
-    const token = req.headers["x-authorization"];
+    const token = req.cookies["auth"];
 
     if (!token) {
         return next();
@@ -14,6 +14,7 @@ exports.auth = async (req, res, next) => {
 
         next();
     } catch {
+        res.clearCookie("auth");
         res.redirect("/auth/login");
     };
 };
