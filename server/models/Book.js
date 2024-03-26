@@ -9,7 +9,7 @@ const bookSchema = new mongoose.Schema({
     author: {
         type: String,
         required: [true, "Author is required!"],
-        minLength: [5, "Author should be at least 5 characters!"],
+        minLength: [2, "Author should be at least 5 characters!"],
     },
     genre: {
         type: String,

@@ -1,1 +1,141 @@
-<p>add-review works!</p>
+<div class="main">
+    <div class="wrapper">
+      <h2>Add review</h2>
+      <form #form="ngForm" (ngSubmit)="addReview(form)">
+        <div class="input-box">
+          <input
+            type="text"
+            id="title"
+            name="title"
+            placeholder="Book title"
+            #inputTitle="ngModel"
+            ngModel
+            required
+            minlength="2"
+          />
+        </div>
+        <ng-container *ngIf="inputTitle.touched">
+            <p class="error" *ngIf="inputTitle.errors?.['required']">
+                Title is required!
+            </p>
+            <p class="error" *ngIf="inputTitle.errors?.['minlength']">
+                Title must be at least 2 characters!
+            </p>
+          </ng-container>
+    
+  
+        <div class="input-box">
+          <input
+            type="text"
+            id="author"
+            name="author"
+            placeholder="Author"
+            #inputAuthor="ngModel"
+            ngModel
+            required
+            minlength="2"
+          />
+        </div>
+        <ng-container *ngIf="inputAuthor.touched">
+            <p class="error" *ngIf="inputAuthor.errors?.['required']">
+                Author is required!
+            </p>
+            <p class="error" *ngIf="inputAuthor.errors?.['minlength']">
+                Author must be at least 2 characters!
+            </p>
+          </ng-container>
+       
+        
+          <div class="input-box">
+            <input
+              type="text"
+              id="iamge"
+              name="image"
+              placeholder="Image"
+              #inputImage="ngModel"
+              ngModel
+              required
+            />
+          </div>
+          <ng-container *ngIf="inputImage.touched">
+            <p class="error" *ngIf="inputImage.errors?.['required']">
+                Image is required!
+            </p>
+          </ng-container>
+
+         
+          <div class="input-box">
+            <input
+              type="text"
+              id="genre"
+              name="genre"
+              placeholder="Genre"
+              #inputGenre="ngModel"
+              ngModel
+              required
+              minlength="3"
+            />
+          </div>
+          <ng-container *ngIf="inputGenre.touched">
+            <p class="error" *ngIf="inputGenre.errors?.['required']">
+                Genre is required!
+            </p>
+            <p class="error" *ngIf="inputGenre.errors?.['minlength']">
+                Genre must be at least 3 characters!
+            </p>
+          </ng-container>
+
+          <div class="input-box">
+            <input
+              type="text"
+              id="review"
+              name="review"
+              placeholder="Your review"
+              #inputReview="ngModel"
+              ngModel
+              required
+              minlength="10"
+            />
+          </div>
+          <ng-container *ngIf="inputReview.touched">
+            <p class="error" *ngIf="inputReview.errors?.['required']">
+                Review is required!
+            </p>
+            <p class="error" *ngIf="inputReview.errors?.['minlength']">
+                Review must be at least 10 characters!
+            </p>
+          </ng-container>
+
+          <div class="input-box">
+            <input
+              type="number"
+              id="stars"
+              name="stars"
+              placeholder="Rating (1-5)"
+              #inputStars="ngModel"
+              ngModel
+              required
+              min="1"
+              max="5"
+            />
+          </div>
+          <ng-container *ngIf="inputStars.touched">
+            <p class="error" *ngIf="inputStars.errors?.['required']">
+                Rating is required!
+            </p>
+            <p class="error" *ngIf="inputStars.errors?.['min']">
+                Rating must be at least 1!
+            </p>
+            <p class="error" *ngIf="inputStars.errors?.['max']">
+                Rating must be less than or equal to 5!
+            </p>
+          </ng-container>
+          
+  
+        <div class="input-box button">
+          <input type="Submit" value="Submit review" />
+        </div>
+      </form>
+    </div>
+  </div>
+  

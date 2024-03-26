@@ -5,6 +5,7 @@ import { AddReviewComponent } from './add-review/add-review.component';
 import { DetailsComponent } from './details/details.component';
 import { BookRoutingModule } from './book-routing.module';
 import { CardComponent } from './card/card.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -17,7 +18,8 @@ import { CardComponent } from './card/card.component';
   ],
   imports: [
     CommonModule,
-    BookRoutingModule
+    BookRoutingModule,
+    FormsModule
   ]
 })
 export class BookModule { }
