@@ -4,6 +4,7 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { AddReviewComponent } from './add-review/add-review.component';
 import { DetailsComponent } from './details/details.component';
 import { BookRoutingModule } from './book-routing.module';
+import { CardComponent } from './card/card.component';
 
 
 
@@ -11,7 +12,8 @@ import { BookRoutingModule } from './book-routing.module';
   declarations: [
     CatalogComponent,
     AddReviewComponent,
-    DetailsComponent
+    DetailsComponent,
+    CardComponent
   ],
   imports: [
     CommonModule,
