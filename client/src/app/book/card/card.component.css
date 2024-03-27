@@ -106,7 +106,7 @@ div.wrapper {
   display: block;
   width: 100%;
   /* padding: 1rem; */
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-align: center;
   color: rgb(255, 106, 0);
   background-color: var(--color-btn-background);
