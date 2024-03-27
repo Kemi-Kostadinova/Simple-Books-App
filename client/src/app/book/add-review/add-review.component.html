@@ -49,20 +49,23 @@
           <div class="input-box">
             <input
               type="text"
-              id="iamge"
+              id="image"
               name="image"
-              placeholder="Image"
+              placeholder="Image URL"
+              [(ngModel)]="image"
               #inputImage="ngModel"
-              ngModel
               required
+              appImage
             />
           </div>
           <ng-container *ngIf="inputImage.touched">
             <p class="error" *ngIf="inputImage.errors?.['required']">
-                Image is required!
+                Image URL is required!
+            </p>
+            <p class="error" *ngIf="inputImage.errors?.['imageValidator']">
+                Image URL is invalid!
             </p>
           </ng-container>
-
          
           <div class="input-box">
             <input
@@ -88,20 +91,20 @@
           <div class="input-box">
             <input
               type="text"
-              id="review"
-              name="review"
+              id="bookReview"
+              name="bookReview"
               placeholder="Your review"
-              #inputReview="ngModel"
+              #inputBookReview="ngModel"
               ngModel
               required
               minlength="10"
             />
           </div>
-          <ng-container *ngIf="inputReview.touched">
-            <p class="error" *ngIf="inputReview.errors?.['required']">
+          <ng-container *ngIf="inputBookReview.touched">
+            <p class="error" *ngIf="inputBookReview.errors?.['required']">
                 Review is required!
             </p>
-            <p class="error" *ngIf="inputReview.errors?.['minlength']">
+            <p class="error" *ngIf="inputBookReview.errors?.['minlength']">
                 Review must be at least 10 characters!
             </p>
           </ng-container>
