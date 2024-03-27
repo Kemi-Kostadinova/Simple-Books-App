@@ -14,7 +14,6 @@ export class CardComponent implements OnInit{
 
   ngOnInit(): void {
     this.api.getBooks().subscribe(books => {
-      console.log(books);
       this.books = books;
     })
   }

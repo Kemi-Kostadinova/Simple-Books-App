@@ -13,7 +13,7 @@ const { apiUrl } = environment
 
 @Injectable()
 class AppInterceptor implements HttpInterceptor {
-  API = '/user'
+  API = '/api'
   constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -21,7 +21,7 @@ class AppInterceptor implements HttpInterceptor {
     if (request.url.startsWith(this.API)) {
       
       request = request.clone({
-        url: apiUrl + request.url,
+        url: request.url.replace(this.API, apiUrl),
         withCredentials: true
       })
     }

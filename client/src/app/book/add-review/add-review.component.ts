@@ -9,6 +9,7 @@ import { ApiService } from 'src/app/api.service';
   styleUrls: ['./add-review.component.css']
 })
 export class AddReviewComponent {
+  image: string = "";
 
   constructor(private apiService: ApiService, private router: Router) {}
 
@@ -17,9 +18,9 @@ export class AddReviewComponent {
       return
     }
 
-    const { title, author, image, review, genre, stars } = form.value;
+    const { title, author, image, bookReview, genre, stars } = form.value;
 
-    this.apiService.createReview(title, author, image, review, genre, stars).subscribe(() => {
+    this.apiService.createReview(title, author, image, bookReview, genre, stars).subscribe(() => {
       this.router.navigate(["/books"])
     });
 

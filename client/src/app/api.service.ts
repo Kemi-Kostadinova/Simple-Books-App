@@ -16,10 +16,9 @@ export class ApiService {
     return this.http.get<Book[]>(`${apiUrl}/book`);
   };
 
-  createReview(title: string, author: string, image: string, review: string, genre: string, stars: number) {
-    const {apiUrl} = environment;
+  createReview(title: string, author: string, image: string, bookReview: string, genre: string, stars: number) {
 
-    return this.http.post<Book>(`${apiUrl}/book`, {title, author, image, review, genre, stars}, {withCredentials: true})
+    return this.http.post<Book>(`/api/book`, {title, author, image, bookReview, genre, stars})
 
   }
 }

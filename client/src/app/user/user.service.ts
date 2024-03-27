@@ -31,7 +31,7 @@ export class UserService implements OnDestroy {
     rePassword: string
   ) {
     return this.http
-      .post<UserForAuth>('/user/register', {
+      .post<UserForAuth>('/api/user/register', {
         username,
         email,
         password,
@@ -42,17 +42,17 @@ export class UserService implements OnDestroy {
 
   login(email: string, password: string) {
 
-    return this.http.post<UserForAuth>("/user/login", { email, password })
+    return this.http.post<UserForAuth>("/api/user/login", { email, password })
       .pipe(tap((user) => this.user$$.next(user)));
   }
 
   logout() {
-    return this.http.get("/user/logout", {})
+    return this.http.get("/api/user/logout", {})
     .pipe(tap(() => this.user$$.next(undefined)));
   }
 
   getUser() {
-    return this.http.get<UserForAuth>('/user/profile')
+    return this.http.get<UserForAuth>('/api/user/profile')
     .pipe(tap(user => this.user$$.next(user)))
   }
 
