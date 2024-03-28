@@ -43,7 +43,6 @@ export class DetailsComponent implements OnInit {
   delete(bookId: string) {
     this.apiService.deleteBook(bookId).subscribe(() => {
       this.route.navigate(["/books"])
-      // this.route.navigate(["/books/catalog"])
     });
   }
 
