@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { ApiService } from 'src/app/api.service';
 import { UserService } from 'src/app/user/user.service';
@@ -17,7 +17,7 @@ export class DetailsComponent implements OnInit {
   userId: string = "";
   isOwnerFlag: boolean = false;
 
-  constructor(private apiService: ApiService, private userService: UserService, private activeRoute: ActivatedRoute) { }
+  constructor(private apiService: ApiService, private userService: UserService, private activeRoute: ActivatedRoute, private route: Router) { }
 
   get isLoggedIn(): boolean {
     return this.userService.isLogged
@@ -32,11 +32,18 @@ export class DetailsComponent implements OnInit {
         this.apiService.getBook(id)
       ]).subscribe(([userData, book]) => {
         this.book = book;
-        
+
         this.userId = userData?._id || "";
         this.owner = book.owner;
         this.isOwnerFlag = this.owner === this.userId;
       });
+    });
+  }
+
+  delete(bookId: string) {
+    this.apiService.deleteBook(bookId).subscribe(() => {
+      this.route.navigate(["/books"])
+      // this.route.navigate(["/books/catalog"])
     });
   }
 

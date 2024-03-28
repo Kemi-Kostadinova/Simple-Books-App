@@ -69,6 +69,7 @@ p {
     text-decoration: none;
     border-radius: 6px;
     transition: background-color 0.3s;
+    cursor: pointer;
 }
 
 .buttons a:hover {

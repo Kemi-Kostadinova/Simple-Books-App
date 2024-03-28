@@ -58,4 +58,10 @@ export class ApiService {
       stars,
     });
   }
+
+  deleteBook(id: string) {
+    const { apiUrl } = environment;
+
+    return this.http.delete<Book>(`${apiUrl}/book/${id}`);
+  }
 }
