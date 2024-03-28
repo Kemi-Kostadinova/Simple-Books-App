@@ -8,5 +8,5 @@ export interface Book {
     "bookReview": string;
     "genre": string;
     "stars": number;
-    "owner": UserForAuth;
+    "owner": string;
 }

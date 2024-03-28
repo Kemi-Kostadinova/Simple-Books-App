@@ -10,15 +10,15 @@ router.get("/", async(req, res) => {
 
 router.post("/", async(req, res) => {
     const bookData = req.body;
-    
     const newBookReview = await bookService.create({ ...bookData, owner: req.user?._id });
 
     res.json(newBookReview);
 });
 
 router.get("/:bookId", async(req, res) => {
-    const book = await bookService.getAll();
-
+    const bookId = req.params.bookId;
+    const book = await bookService.getOne(bookId);
+;
     res.json(book);
 });
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { forkJoin } from 'rxjs';
 import { ApiService } from 'src/app/api.service';
 import { UserService } from 'src/app/user/user.service';
 import { Book } from 'src/types/book';
@@ -13,6 +14,8 @@ export class DetailsComponent implements OnInit {
 
   book = {} as Book;
   owner: string = "";
+  userId: string = "";
+  isOwnerFlag: boolean = false;
 
   constructor(private apiService: ApiService, private userService: UserService, private activeRoute: ActivatedRoute) { }
 
@@ -20,27 +23,21 @@ export class DetailsComponent implements OnInit {
     return this.userService.isLogged
   }
 
-  get userId(): string {
-    return this.userService.user?._id || "";
-  }
-
   ngOnInit(): void {
     this.activeRoute.params.subscribe((data) => {
       const id = data['bookId'];
 
-      this.apiService.getBook(id).subscribe((book) => {
-        this.owner = book.owner;
-        
+      forkJoin([
+        this.userService.getUser(),
+        this.apiService.getBook(id)
+      ]).subscribe(([userData, book]) => {
         this.book = book;
-      })
-    })
-  }
-
-  isOwner() { 
-    console.log(this.owner);
-    
-    return this.owner === this.userId
-
+        
+        this.userId = userData?._id || "";
+        this.owner = book.owner;
+        this.isOwnerFlag = this.owner === this.userId;
+      });
+    });
   }
 
 }

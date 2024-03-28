@@ -12,7 +12,7 @@ export class UserService implements OnDestroy {
 
   user: UserForAuth | undefined;
   userSubscription: Subscription;
-  
+
 
   get isLogged(): boolean {
     return !!this.user
@@ -48,12 +48,12 @@ export class UserService implements OnDestroy {
 
   logout() {
     return this.http.get("/api/user/logout", {})
-    .pipe(tap(() => this.user$$.next(undefined)));
+      .pipe(tap(() => this.user$$.next(undefined)));
   }
 
   getUser() {
     return this.http.get<UserForAuth>('/api/user/profile')
-    .pipe(tap(user => this.user$$.next(user)))
+      .pipe(tap(user => this.user$$.next(user)))
   }
 
   ngOnDestroy(): void {
