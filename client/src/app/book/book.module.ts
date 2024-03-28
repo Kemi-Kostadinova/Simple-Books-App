@@ -7,6 +7,7 @@ import { BookRoutingModule } from './book-routing.module';
 import { CardComponent } from './card/card.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { EditComponent } from './edit/edit.component';
 
 
 
@@ -15,7 +16,8 @@ import { SharedModule } from '../shared/shared.module';
     CatalogComponent,
     AddReviewComponent,
     DetailsComponent,
-    CardComponent
+    CardComponent,
+    EditComponent
   ],
   imports: [
     CommonModule,

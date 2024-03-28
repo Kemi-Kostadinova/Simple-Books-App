@@ -38,4 +38,24 @@ export class ApiService {
 
     return this.http.get<Book>(`${apiUrl}/book/${id}`);
   }
+
+  updateReview(id: string,
+    title: string,
+    author: string,
+    image: string,
+    bookReview: string,
+    genre: string,
+    stars: number
+  ) {
+    const { apiUrl } = environment;
+
+    return this.http.put<Book>(`${apiUrl}/book/${id}`, {
+      title,
+      author,
+      image,
+      bookReview,
+      genre,
+      stars,
+    });
+  }
 }
