@@ -7,11 +7,11 @@
       </div>
     </div>
     <div class="content__title">
-      <h1>{{user?.username}}</h1>
-      <span>{{user?.email}}</span>
+      <h1>{{ user?.username }}</h1>
+      <span>{{ user?.email }}</span>
     </div>
-    <div class="content__button">
-      <a class="button" href="#">
+    <div class="content__button" (click)="toggleReviewsVisibility()">
+      <a class="button">
         <div class="button__border"></div>
         <div class="button__bg"></div>
         <p class="button__text">My reviews</p></a
@@ -20,15 +20,18 @@
   </div>
 </div>
 
-<div class="cards-list">
-  
-  <div class="card 1">
-    <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
-    <div class="card_title title-white">
-      <p>Card Title</p>
+<ng-container *ngIf="showReviews">
+  <ng-container *ngIf="hasRewies()">  
+    <div class="cards-list">
+      <div class="card 1" *ngFor="let book of books" [routerLink]="['/books', book._id]">
+        <div class="card_image"><img src="{{ book.image }}" /></div>
+        <div class="card_title title-white">
+          <p>{{book.title}}</p>
+        </div>
+      </div>
     </div>
-  </div>
-  
-  
-  </div>
-
+  </ng-container>
+  <ng-container *ngIf="!hasRewies()">
+    <h2>No reviews yet!</h2>
+  </ng-container>
+</ng-container>

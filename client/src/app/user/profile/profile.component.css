@@ -69,13 +69,32 @@
 }
 
 .card {
+  position: relative; /* Ensure relative positioning for pseudo-element */
   margin: 30px auto;
   width: 300px;
   height: 300px;
   border-radius: 40px;
-box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+  box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25),
+    -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
   cursor: pointer;
   transition: 0.4s;
+  overflow: hidden; /* Ensure overflow is hidden for the pseudo-element */
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 30%,
+    rgba(0, 0, 0, 0.6839985994397759) 100%
+  );
+  z-index: 1;
 }
 
 .card .card_image {
@@ -92,6 +111,7 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
 }
 
 .card .card_title {
+  position: relative;
   text-align: center;
   border-radius: 0px 0px 40px 40px;
   font-family: sans-serif;
@@ -99,12 +119,13 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
   font-size: 30px;
   margin-top: -80px;
   height: 40px;
+  z-index: 2;
 }
 
 .card:hover {
   transform: scale(0.9, 0.9);
-  box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
-    -5px -5px 30px 15px rgba(0,0,0,0.22);
+  box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
+    -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
 }
 
 .title-white {
@@ -115,11 +136,13 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
   color: black;
 }
 
+h2 {
+  text-align: center; /* Center the text */
+  margin-bottom: 20px; /* Add space at the bottom */
+}
+
 @media all and (max-width: 500px) {
   .card-list {
-    /* On small screens, we are no longer using row direction but column */
     flex-direction: column;
   }
 }
-
-

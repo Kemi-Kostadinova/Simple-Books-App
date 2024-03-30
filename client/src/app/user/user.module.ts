@@ -9,7 +9,6 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 
 
-
 @NgModule({
   declarations: [
     LoginComponent,
@@ -21,7 +20,7 @@ import { SharedModule } from '../shared/shared.module';
     UserRoutingModule,
     RouterModule,
     FormsModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class UserModule { }
