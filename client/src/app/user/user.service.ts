@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject, Subscription, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, map, tap } from 'rxjs';
 import { UserForAuth } from 'src/types/user';
 
 @Injectable({
@@ -13,9 +13,8 @@ export class UserService implements OnDestroy {
   user: UserForAuth | undefined;
   userSubscription: Subscription;
 
-
   get isLogged(): boolean {
-    return !!this.user
+    return !!document.cookie;
   }
 
   constructor(private http: HttpClient) {
@@ -41,19 +40,21 @@ export class UserService implements OnDestroy {
   }
 
   login(email: string, password: string) {
-
-    return this.http.post<UserForAuth>("/api/user/login", { email, password })
+    return this.http
+      .post<UserForAuth>('/api/user/login', { email, password })
       .pipe(tap((user) => this.user$$.next(user)));
   }
 
   logout() {
-    return this.http.get("/api/user/logout", {})
+    return this.http
+      .get('/api/user/logout', {})
       .pipe(tap(() => this.user$$.next(undefined)));
   }
 
   getUser() {
-    return this.http.get<UserForAuth>('/api/user/profile')
-      .pipe(tap(user => this.user$$.next(user)))
+    return this.http
+      .get<UserForAuth>('/api/user/profile')
+      .pipe(tap((user) => this.user$$.next(user)));
   }
 
   ngOnDestroy(): void {
