@@ -1,32 +1,16 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Ensure the body fills the viewport height */
-  }
-  
-  main {
-    flex: 1; /* Allow main content to grow to fill remaining space */
-  }
-  
-  footer {
-    background: #111;
-    color: #fff;
-    padding-top: 40px;
-    text-align: center;
-  }
-  
-  .footer-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
+footer {
+  background: #111;
+  color: #fff;
+  padding-top: 40px;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 
 .footer-content h3 {
   font-size: 2rem;
