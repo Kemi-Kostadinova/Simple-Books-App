@@ -1,5 +1,5 @@
 .details-page {
-    padding: 20px;
+    padding: 120px;
 }
 
 .details-card-info h2 {
@@ -74,4 +74,34 @@ p {
 
 .buttons a:hover {
     background-color: #FF6A00;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .details-page {
+        padding: 120px 50px;
+    }
+
+    .details-card {
+        flex-direction: column;
+    }
+
+    .details-card-info,
+    .details-card-image {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .details-card-info h2::before {
+        width: 20px;
+    }
+
+    .details-card-info h2 {
+        font-size: 18px;
+    }
+
+    .details-card-info p {
+        font-size: 14px;
+    }
 }
