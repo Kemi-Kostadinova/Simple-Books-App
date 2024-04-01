@@ -1,17 +1,20 @@
 <header>
   <h1 class="logo"><a routerLink="/">BookBuzz</a></h1>
-  <ul class="nav">
+  <div class="menu-toggle" (click)="toggleNav()">
+    <i class="fas fa-bars"></i>
+  </div>
+  <ul class="nav" [ngClass]="{ active: isNavActive }">
     <li class="navlink"><a routerLink="/">Home</a></li>
     <li class="navlink"><a routerLink="/books">Explore</a></li>
     <!-- <li class="navlink"><a href="#">About</a></li> -->
-    <ng-container *ngIf="!isLoggedIn">
-    <li class="navlink"><a routerLink="/login">Login</a></li>
-    <li class="navlink"><a routerLink="/register">Register</a></li>
+    <ng-container *ngIf="!isLoggedIn; else loggedIn">
+      <li class="navlink"><a routerLink="/login">Login</a></li>
+      <li class="navlink"><a routerLink="/register">Register</a></li>
     </ng-container>
-    <ng-container *ngIf="isLoggedIn">
+    <ng-template #loggedIn>
       <li class="navlink"><a routerLink="/books/add">Add Review</a></li>
       <li class="navlink"><a routerLink="/profile">Profile</a></li>
       <li class="navlink" (click)="logout()"><a>Logout</a></li>
-  </ng-container>
+    </ng-template>
   </ul>
 </header>

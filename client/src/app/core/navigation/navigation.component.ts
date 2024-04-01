@@ -9,10 +9,16 @@ import { UserService } from 'src/app/user/user.service';
 })
 export class NavigationComponent {
 
-  constructor(private userService: UserService, private route:Router) {}
+  isNavActive = false;
 
-  get isLoggedIn(): boolean {    
+  constructor(private userService: UserService, private route: Router) { }
+
+  get isLoggedIn(): boolean {
     return this.userService.isLogged;
+  }
+
+  toggleNav(): void {
+    this.isNavActive = !this.isNavActive;
   }
 
   logout() {
