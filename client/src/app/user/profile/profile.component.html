@@ -1,5 +1,8 @@
 <div class="profile-page">
-  <div class="content">
+  <div *ngIf="isProfileLoading">
+    <app-loader />
+  </div>
+  <div class="content" *ngIf="!isProfileLoading">
     <div class="content__cover">
       <div class="content__avatar"></div>
       <div class="content__bull">
@@ -20,13 +23,21 @@
   </div>
 </div>
 
-<ng-container *ngIf="showReviews">
-  <ng-container *ngIf="hasRewies()">  
+<div *ngIf="showReviews && areReviewsLoading">
+  <app-loader />
+</div>
+
+<ng-container *ngIf="showReviews && !areReviewsLoading">
+  <ng-container *ngIf="hasRewies()">
     <div class="cards-list">
-      <div class="card 1" *ngFor="let book of books" [routerLink]="['/books', book._id]">
+      <div
+        class="card 1"
+        *ngFor="let book of books"
+        [routerLink]="['/books', book._id]"
+      >
         <div class="card_image"><img src="{{ book.image }}" /></div>
         <div class="card_title title-white">
-          <p>{{book.title}}</p>
+          <p>{{ book.title }}</p>
         </div>
       </div>
     </div>

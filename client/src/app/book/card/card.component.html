@@ -1,19 +1,18 @@
 <div class="wrapper">
-  <div  class="grid">
+  <div *ngIf="isLoading">
+    <app-loader />
+  </div>
+  <div class="grid" *ngIf="!isLoading">
     <div *ngFor="let book of books" class="card">
-      <img
-        class="card__img"
-        src="{{book.image}}"
-        alt="{{book.title}}"
-      />
+      <img class="card__img" src="{{ book.image }}" alt="{{ book.title }}" />
       <div class="card__content">
-        <h1 class="card__header">{{book.title}}</h1>
+        <h1 class="card__header">{{ book.title }}</h1>
         <div class="card__text-wrapper">
-          <p class="card__text">
-            By {{book.author}}
-          </p>
+          <p class="card__text">By {{ book.author }}</p>
         </div>
-        <button class="card__btn" [routerLink]="book._id">Read review<span>&rarr;</span></button>
+        <button class="card__btn" [routerLink]="book._id">
+          Read review<span>&rarr;</span>
+        </button>
       </div>
     </div>
   </div>

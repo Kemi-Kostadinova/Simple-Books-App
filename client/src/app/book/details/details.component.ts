@@ -16,11 +16,12 @@ export class DetailsComponent implements OnInit {
   owner: string = "";
   userId: string = "";
   isOwnerFlag: boolean = false;
+  isLoading: boolean = true;
 
   constructor(private apiService: ApiService, private userService: UserService, private activeRoute: ActivatedRoute, private route: Router) { }
 
   get isLoggedIn(): boolean {
-    return this.userService.isLogged
+    return this.userService.isLogged;
   }
 
   ngOnInit(): void {
@@ -36,13 +37,15 @@ export class DetailsComponent implements OnInit {
         this.userId = userData?._id || "";
         this.owner = book.owner;
         this.isOwnerFlag = this.owner === this.userId;
+
+        this.isLoading = false;
       });
     });
   }
 
   delete(bookId: string) {
     this.apiService.deleteBook(bookId).subscribe(() => {
-      this.route.navigate(["/books"])
+      this.route.navigate(["/books"]);
     });
   }
 

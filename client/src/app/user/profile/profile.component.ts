@@ -10,25 +10,27 @@ import { ApiService } from 'src/app/api.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
   user: UserForAuth | undefined;
   books: Book[] = [];
   showReviews: boolean = false;
+  isProfileLoading: boolean = true;
+  areReviewsLoading: boolean = true;
 
   constructor(private userService: UserService, private api: ApiService) {}
 
   ngOnInit(): void {
     this.userService.getUser().subscribe(user => {
       this.user = user;
-      // if (user) {
-      //   this.filterBooksByOwner(user._id);
-      // }
+      
+      this.isProfileLoading = false;
     })
   }
 
   filterBooksByOwner(userId: string) {
     this.api.getBooks().subscribe(books => {
       this.books = books.filter((currentBook) => currentBook.owner === userId);
+
+      this.areReviewsLoading = false;
     });
   }
 
@@ -37,9 +39,9 @@ export class ProfileComponent implements OnInit {
   }
 
   toggleReviewsVisibility() {
-    this.showReviews = !this.showReviews; // Toggle the visibility flag
+    this.showReviews = !this.showReviews;
     if (this.showReviews && this.user) {
-      this.filterBooksByOwner(this.user._id); // Fetch books if reviews are visible
+      this.filterBooksByOwner(this.user._id);
     }
   }
 

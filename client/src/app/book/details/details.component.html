@@ -1,20 +1,25 @@
 <section class="details-page">
-    <div class="details-card">
-        <div class="details-card-image">
-            <img src="{{book.image}}" alt="Book Cover">
-        </div>
-        <div class="details-card-info">
-            <h2>Title: {{book.title}}</h2>
-            <p><span class="label">Author:</span> {{book.author}}</p>
-            <p><span class="label">Stars:</span> {{book.stars}}</p>
-            <p><span class="label">Genre:</span> {{book.genre}}</p>
-            <p><span class="label">Review:</span> {{book.bookReview}}</p>
-            <ng-container *ngIf="isLoggedIn && isOwnerFlag">
-                <div class="buttons">
-                    <a [routerLink]="['/books', book._id, 'edit']" class="btn-edit">Edit</a>
-                    <a class="btn-delete" (click)="delete(book._id)">Delete</a>
-                </div>
-            </ng-container>
-        </div>
+  <div *ngIf="isLoading">
+    <app-loader />
+  </div>
+  <div class="details-card" *ngIf="!isLoading">
+    <div class="details-card-image">
+      <img src="{{ book.image }}" alt="Book Cover" />
     </div>
+    <div class="details-card-info">
+      <h2>Title: {{ book.title }}</h2>
+      <p><span class="label">Author:</span> {{ book.author }}</p>
+      <p><span class="label">Stars:</span> {{ book.stars }}</p>
+      <p><span class="label">Genre:</span> {{ book.genre }}</p>
+      <p><span class="label">Review:</span> {{ book.bookReview }}</p>
+      <ng-container *ngIf="isLoggedIn && isOwnerFlag">
+        <div class="buttons">
+          <a [routerLink]="['/books', book._id, 'edit']" class="btn-edit"
+            >Edit</a
+          >
+          <a class="btn-delete" (click)="delete(book._id)">Delete</a>
+        </div>
+      </ng-container>
+    </div>
+  </div>
 </section>
