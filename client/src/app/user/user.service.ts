@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription, map, tap } from 'rxjs';
+import { Book } from 'src/types/book';
 import { UserForAuth } from 'src/types/user';
 
 @Injectable({
@@ -55,6 +56,10 @@ export class UserService implements OnDestroy {
     return this.http
       .get<UserForAuth>('/api/user/profile')
       .pipe(tap((user) => this.user$$.next(user)));
+  }
+
+  isOwner(book: Book): boolean {
+    return !!this.user && book.owner === this.user._id;
   }
 
   ngOnDestroy(): void {

@@ -5,12 +5,13 @@ import { DetailsComponent } from './details/details.component';
 import { AddReviewComponent } from './add-review/add-review.component';
 import { UserActivate } from '../guards/user.activate';
 import { EditComponent } from './edit/edit.component';
+import { OwnerActivate } from '../guards/owner.activate';
 
 const routes: Routes = [{path: "books", children: [ 
     {path: "", pathMatch: "full", component: CatalogComponent},
     {path: "add", component: AddReviewComponent, canActivate: [UserActivate]},
     {path: ":bookId", component: DetailsComponent},
-    {path: ":bookId/edit", component: EditComponent, canActivate: [UserActivate]},
+    {path: ":bookId/edit", component: EditComponent, canActivate: [OwnerActivate]},
 ]}];
 
 @NgModule({
