@@ -8,6 +8,7 @@ const routes: Routes = [{ path: "", pathMatch: "full", redirectTo: "/home" },
 { path: "home", component: HomeComponent },
 { path: "error", component: ErrorComponent },
 { path: "auth", loadChildren: () => import('./user/user.module').then((m) => m.UserModule) },
+{ path: "books", loadChildren: () => import('./book/book.module').then((m) => m.BookModule) },
 { path: "**", pathMatch: "full", redirectTo: "/404" },
 { path: "404", component: ErrorPageComponent }];
 

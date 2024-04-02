@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { HomeComponent } from './home/home.component';
-import { BookModule } from './book/book.module';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { appInterceptorProvider } from './app.interceptor';
@@ -24,7 +23,6 @@ import { AuthenticateComponent } from './authenticate/authenticate.component';
     HttpClientModule,
     SharedModule,
     CoreModule,
-    BookModule,
     AppRoutingModule,
   ],
   providers: [appInterceptorProvider],
