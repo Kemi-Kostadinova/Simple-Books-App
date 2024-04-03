@@ -4,6 +4,7 @@
     box-sizing: border-box;
   }
   div.main{
+    padding: 120px;
     min-height: 100vh;
     display: flex;
     align-items: center;
